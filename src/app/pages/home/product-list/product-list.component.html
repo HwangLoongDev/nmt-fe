@@ -1,0 +1,53 @@
+<div
+  class="surface-section px-4 py-8 md:px-6 lg:px-8 flex flex-column justify-center items-center"
+>
+  <div class="text-900 font-medium text-4xl mb-4 text-center">Các dòng xe</div>
+  <div class="flex flex-wrap lg:w-[1220px] w-full">
+    <div
+      *ngFor="let item of listProduct"
+      class="col-12 sm:col-6 lg:col-4 mb-5 lg:mb-0"
+    >
+      <div class="mb-3 relative">
+        <img
+          style="width: 390px; height: 461px; object-fit: contain"
+          src="../../../../assets/imgs/z4366493336439_264e26521a3b2584970ce1d626f57545-removebg.png"
+          class="w-full"
+        /><button
+          (click)="showQuickView()"
+          type="button"
+          pripple=""
+          class="p-ripple p-element border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
+          style="
+            bottom: 1rem;
+            left: 1rem;
+            width: calc(100% - 2rem);
+            backdrop-filter: blur(4px);
+          "
+        >
+          <i-feather class="mr-3" name="eye"></i-feather>
+          <span class="text-base">Quick view</span><span class="p-ink"></span>
+        </button>
+      </div>
+      <div class="flex flex-column align-items-center">
+        <span class="text-xl text-900 font-medium mb-3">Product Name</span
+        ><span class="text-xl text-900 mb-3">$150.00</span>
+        <div class="flex align-items-center mb-3">
+          <div
+            class="w-2rem h-2rem flex-shrink-0 border-circle bg-bluegray-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
+            style="box-shadow: 0 0 0 0.2rem var(--bluegray-500)"
+          ></div>
+          <div
+            class="w-2rem h-2rem flex-shrink-0 border-circle bg-indigo-500 hover:border-indigo-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
+          ></div>
+          <div
+            class="w-2rem h-2rem flex-shrink-0 border-circle bg-purple-500 hover:border-purple-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
+          ></div>
+          <div
+            class="w-2rem h-2rem flex-shrink-0 border-circle bg-cyan-500 hover:border-cyan-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
+          ></div>
+        </div>
+        <span class="text-500">Bluegray</span>
+      </div>
+    </div>
+  </div>
+</div>

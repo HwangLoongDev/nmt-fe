@@ -1,0 +1,19 @@
+<!-- [(value)]="images" -->
+<p-galleria
+  [value]="images"
+  [numVisible]="5"
+  [circular]="true"
+  [showItemNavigators]="true"
+  [showThumbnails]="false"
+  [showTransitionOptions]="'150ms cubic-bezier(0, 0, 0.2, 1)'"
+  [responsiveOptions]="responsiveOptions"
+  [autoPlay]="true"
+  [draggable]="true"
+>
+  <ng-template pTemplate="item" let-item>
+    <img
+      [src]="item.itemImageSrc"
+      style="width: 100vw; height: 80vh; display: block; object-fit: cover"
+    />
+  </ng-template>
+</p-galleria>
