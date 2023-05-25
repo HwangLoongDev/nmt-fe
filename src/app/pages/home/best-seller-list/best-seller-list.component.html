@@ -3,24 +3,29 @@
     Sản phẩm bán chạy
   </div>
 
-  <div class="flex flex-wrap">
-    <div
-      *ngFor="let item of listBestSeller"
-      class="col-12 md:col-6 lg:col-4 xl:col-2 border-bottom-1 surface-border md:border-bottom-none"
-    >
-      <div class="p-2">
-        <img
-          style="width: 192px; height: 192px; object-fit: contain"
-          src="../../../../assets/imgs/z4366493336439_264e26521a3b2584970ce1d626f57545-removebg.png"
-          class="w-full mb-3"
-        />
-        <div class="text-900 text-xl font-medium mb-2">$140.00</div>
-        <div class="mb-2">
-          <span class="text-600 line-through">$175.00</span
-          ><span class="ml-2 text-pink-500 font-medium">%25</span>
+  <p-carousel
+    [value]="listBestSeller"
+    [numVisible]="3"
+    [numScroll]="1"
+    [responsiveOptions]="responsiveOptions"
+    [showIndicators]="false"
+  >
+    <ng-template let-product pTemplate="item">
+      <div class="p-5 flex flex-col items-center">
+        <div class="mb-3">
+          <img
+            src="../../../../assets/imgs/z4366493336439_264e26521a3b2584970ce1d626f57545-removebg.png"
+            [alt]="1"
+          />
         </div>
-        <span class="text-900">Product Name</span>
+        <div>
+          <h4 class="mb-1">Product Name</h4>
+          <div class="mb-2">
+            <span class="text-600 line-through">$175.00</span
+            ><span class="ml-2 text-pink-500 font-medium">%25</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    </ng-template>
+  </p-carousel>
 </div>

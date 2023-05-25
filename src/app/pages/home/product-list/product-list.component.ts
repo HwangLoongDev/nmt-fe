@@ -8,7 +8,7 @@ import { ProductQuickViewComponent } from './product-quick-view/product-quick-vi
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent {
-  listProduct = Array.from(Array(9).keys())
+  listProduct = Array.from(Array(6).keys())
   ref!: DynamicDialogRef;
 
   constructor(public dialogService: DialogService) { }
