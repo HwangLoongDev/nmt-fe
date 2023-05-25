@@ -23,5 +23,10 @@ export class BestSellerListComponent {
       numVisible: 2,
       numScroll: 1,
     },
+    {
+      breakpoint: '475px',
+      numVisible: 1,
+      numScroll: 1,
+    },
   ];
 }
