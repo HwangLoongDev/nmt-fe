@@ -2,133 +2,58 @@
   <div class="flex flex-col lg:flex-row">
     <div class="col-12 lg:col-6">
       <div class="flex">
-        <div class="flex flex-column w-2 justify-between">
-          <img
-            *ngFor="let img of productImages; let idx = index"
-            (click)="selectedImage = img"
-            class="w-full cursor-pointer border-2 border-round border-transparent transition-colors transition-duration-150 border-primary ng-star-inserted"
-            [src]="img"
-          />
-        </div>
         <div class="pl-3 w-10">
-          <img class="w-full border-round" [src]="selectedImage" />
+          <img class="w-full border-round" [src]="selectedProduct.images[0]" />
         </div>
       </div>
     </div>
     <div class="col-12 lg:col-6 py-3 lg:pl-6">
       <div class="flex items-center text-xl font-medium text-900 mb-4">
-        Product Title Placeholder
+        {{ dialogData.item.productName }}
       </div>
       <div class="flex items-center justify-between mb-5">
-        <span class="text-900 font-medium text-3xl block">$120</span>
-        <div class="flex items-center">
-          <span class="mr-3"
-            ><i class="pi pi-star-fill text-yellow-500 mr-1"></i
-            ><i class="pi pi-star-fill text-yellow-500 mr-1"></i
-            ><i class="pi pi-star-fill text-yellow-500 mr-1"></i
-            ><i class="pi pi-star-fill text-yellow-500 mr-1"></i
-            ><i class="pi pi-star text-700 mr-1"></i></span
-          ><span class="text-sm"
-            ><b class="text-900 mr-1">24</b
-            ><span class="text-500"></span>reviews</span
-          >
+        <span class="text-900 font-medium text-3xl block"
+          >{{ selectedProduct.price | number }} VNĐ</span
+        >
+      </div>
+      <div class="font-bold text-900 mb-3">Màu sắc</div>
+      <div class="flex flex-wrap gap-2 items-center mb-5">
+        <div
+          *ngFor="
+            let item of dialogData.item.productClassification;
+            let idx = index
+          "
+          (click)="selectedProduct = dialogData.item.productClassification[idx]"
+          style="width: calc(100% / 4 - 8px)"
+          class="h-3rem border-1 border-300 text-900 inline-flex justify-content-center items-center flex-shrink-0 border-round cursor-pointer hover:surface-100 transition-duration-150 transition-colors"
+        >
+          {{ item.color }}
         </div>
       </div>
-      <div class="font-bold text-900 mb-3">Color</div>
-      <div class="flex items-center mb-5">
-        <div
-          class="w-2rem h-2rem flex-shrink-0 border-circle bg-bluegray-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-          style="box-shadow: 0 0 0 0.2rem var(--bluegray-500)"
-        ></div>
-        <div
-          class="w-2rem h-2rem flex-shrink-0 border-circle bg-green-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-        ></div>
-        <div
-          class="w-2rem h-2rem flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-        ></div>
-      </div>
-      <div class="mb-3 flex items-center justify-between">
-        <span class="font-bold text-900">Size</span
-        ><a
-          tabindex="0"
-          class="cursor-pointer text-600 text-sm flex items-center"
-          >Size Guide <i class="ml-1 pi pi-angle-right"></i
-        ></a>
-      </div>
-      <div class="flex items-center mb-5">
-        <div
-          class="col h-3rem border-1 border-300 text-900 inline-flex justify-content-center items-center flex-shrink-0 border-round mr-3 cursor-pointer hover:surface-100 transition-duration-150 transition-colors"
-        >
-          XS
-        </div>
-        <div
-          class="col h-3rem border-1 border-300 text-900 inline-flex justify-content-center items-center flex-shrink-0 border-round mr-3 cursor-pointer hover:surface-100 transition-duration-150 transition-colors"
-        >
-          S
-        </div>
-        <div
-          class="col h-3rem border-1 border-300 text-900 inline-flex justify-content-center items-center flex-shrink-0 border-round mr-3 cursor-pointer hover:surface-100 transition-duration-150 transition-colors border-blue-500 border-2 text-blue-500"
-        >
-          M
-        </div>
-        <div
-          class="col h-3rem border-1 border-300 text-900 inline-flex justify-content-center items-center flex-shrink-0 border-round mr-3 cursor-pointer hover:surface-100 transition-duration-150 transition-colors"
-        >
-          L
-        </div>
-        <div
-          class="col h-3rem border-1 border-300 text-900 inline-flex justify-content-center items-center flex-shrink-0 border-round cursor-pointer hover:surface-100 transition-duration-150 transition-colors"
-        >
-          XL
-        </div>
-      </div>
-      <!-- <div class="font-bold text-900 mb-3">Quantity</div> -->
-      <!-- <div
-        class="flex flex-column sm:flex-row sm:items-center sm:justify-between"
+    </div>
+  </div>
+
+  <div class="flex">
+    <div class="flex justify-end flex-wrap lg:w-[1220px] lg:max-w[1220px]">
+      <div
+        *ngFor="let item of group"
+        class="col-12 sm:col-6 lg:col-4 mb-5 lg:mb-0 cursor-pointer"
+        (click)="showQuickView(item)"
       >
-        <p-inputNumber
-          buttonlayout="horizontal"
-          spinnermode="horizontal"
-          [min]="0"
-          inputstyleclass="w-3rem text-center"
-          decrementbuttonclass="p-button-text"
-          incrementbuttonclass="p-button-text"
-          incrementbuttonicon="pi pi-plus"
-          decrementbuttonicon="pi pi-minus"
-          class="p-element p-inputwrapper ng-untouched ng-pristine ng-valid p-inputwrapper-filled"
-          ><span
-            class="p-inputnumber p-component p-inputnumber-buttons-horizontal"
-            ><input
-              pinputtext=""
-              inputmode="decimal"
-              class="p-inputtext p-component p-element w-3rem text-center p-inputnumber-input p-filled"
-              min="0" /><button
-              type="button"
-              pbutton=""
-              tabindex="-1"
-              class="p-element p-button-icon-only p-button-text p-inputnumber-button p-inputnumber-button-up p-button p-component ng-star-inserted"
-            >
-              <span class="pi pi-plus ng-star-inserted"></span></button
-            ><button
-              type="button"
-              pbutton=""
-              tabindex="-1"
-              class="p-element p-button-icon-only p-button-text p-inputnumber-button p-inputnumber-button-down p-button p-component ng-star-inserted"
-            >
-              <span class="pi pi-minus ng-star-inserted"></span></button></span
-        ></p-inputNumber>
-        <div class="flex items-center flex-1 mt-3 sm:mt-0 ml-0 sm:ml-5">
-          <button
-            pbutton=""
-            pripple=""
-            label="Add to Cart"
-            class="p-element p-ripple flex-1 mr-5 p-button p-component"
-          >
-            <span class="p-button-label">Add to Cart</span
-            ><span class="p-ink"></span></button
-          ><i class="pi text-2xl cursor-pointer pi-heart text-600"></i>
+        <div class="mb-3 relative">
+          <img
+            style="width: 350px; height: 180px; object-fit: cover"
+            [src]="item.productClassification[0].images"
+            class="w-full"
+          />
         </div>
-      </div> -->
+        <div class="flex flex-column align-items-center">
+          <span class="text-lg font-medium mb-3">{{ item.productName }}</span>
+          <span class="text-lg text-600 mb-3">
+            <!-- Giá từ: {{ minPrice(item) | number }} -->
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </div>

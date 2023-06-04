@@ -1,31 +1,35 @@
-<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+<div
+  class="surface-section px-4 py-8 md:px-6 lg:px-8 flex flex-col justify-center items-center"
+>
   <div class="text-900 font-medium text-4xl mb-4 text-center">
     Sản phẩm bán chạy
   </div>
 
-  <p-carousel
-    [value]="listBestSeller"
-    [numVisible]="3"
-    [numScroll]="1"
-    [responsiveOptions]="responsiveOptions"
-    [showIndicators]="false"
-  >
-    <ng-template let-product pTemplate="item">
-      <div class="p-5 flex flex-col items-center">
-        <div class="mb-3">
-          <img
-            src="../../../../assets/imgs/z4366493336439_264e26521a3b2584970ce1d626f57545-removebg.png"
-            [alt]="1"
-          />
-        </div>
-        <div>
-          <h4 class="mb-1">Product Name</h4>
-          <div class="mb-2">
-            <span class="text-600 line-through">$175.00</span
-            ><span class="ml-2 text-pink-500 font-medium">%25</span>
+  <div class="lg:w-[1220px] w-full">
+    <p-carousel
+      [value]="listBestSeller"
+      [numVisible]="3"
+      [numScroll]="1"
+      [responsiveOptions]="responsiveOptions"
+      [showIndicators]="false"
+    >
+      <ng-template let-product pTemplate="item">
+        <div class="p-5 flex flex-col items-center">
+          <div class="mb-3">
+            <img [src]="product.images[0]" [alt]="product.title" />
+          </div>
+          <div>
+            <h4 class="mb-1 font-medium">
+              {{ product.title }} - {{ product.color }}
+            </h4>
+            <div class="mb-2">
+              <span class="text-600 text-xl font-medium">{{
+                product.price | number
+              }}</span>
+            </div>
           </div>
         </div>
-      </div>
-    </ng-template>
-  </p-carousel>
+      </ng-template>
+    </p-carousel>
+  </div>
 </div>

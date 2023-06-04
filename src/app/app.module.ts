@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,14 @@ import { NewsComponent } from './pages/home/news/news.component';
 import { FeedbackComponent } from './pages/home/feedback/feedback.component';
 import { ProductQuickViewComponent } from './pages/home/product-list/product-quick-view/product-quick-view.component';
 import { DialogService } from 'primeng/dynamicdialog';
+
+// Angular Fire
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { firebaseConfig } from './@core/firebase/firebase.config';
 
 @NgModule({
   declarations: [
@@ -39,9 +47,15 @@ import { DialogService } from 'primeng/dynamicdialog';
     AppRoutingModule,
     ComponentsModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore()),
   ],
-  providers: [DialogService],
-  bootstrap: [AppComponent]
+  providers: [
+    DialogService,
+    { provide: FIREBASE_OPTIONS, useValue: firebaseConfig },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
