@@ -42,7 +42,10 @@ import { firebaseConfig } from './@core/firebase/firebase.config';
     ProductQuickViewComponent,
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
+    BrowserModule.withServerTransition({
+      appId: 'ford-nmt',
+    }),
     BrowserAnimationsModule,
     AppRoutingModule,
     ComponentsModule,
